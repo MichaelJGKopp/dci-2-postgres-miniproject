@@ -1,8 +1,9 @@
--- noinspection SqlCurrentSchemaInspectionForFile
-
+--
 create database sales_db
     with owner postgres;
 
+
+--
 create table public.customers
 (
     customer_id       serial
@@ -16,6 +17,7 @@ create table public.customers
 alter table public.customers
     owner to postgres;
 
+--
 create table public.products
 (
     product_id serial
@@ -29,6 +31,7 @@ create table public.products
 alter table public.products
     owner to postgres;
 
+--
 create table public.orders
 (
     order_id           serial
@@ -45,6 +48,7 @@ create table public.orders
 alter table public.orders
     owner to postgres;
 
+--
 create table public.order_items
 (
     order_item_id serial
@@ -56,7 +60,7 @@ create table public.order_items
             on delete cascade,
     quantity      INT            not null,
     price         DECIMAL(10, 2) not null,
-    order_id    integer        not null
+    order_id      integer        not null
         constraint order_items_orders_order_id_fk
             references public.products
             on delete cascade
